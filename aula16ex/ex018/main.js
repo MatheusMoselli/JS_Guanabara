@@ -1,29 +1,32 @@
 function calcular() {
-    var number = document.getElementById('txtn')
-    var select = document.getElementById('txts')
-    var array = [select]
+    // Pegar o número do INPUT
+    const numNovo = document.getElementById('txtn')
+    const num = Number(numNovo.value)
 
-    var numValue = Number(number.value)
+    // Verificar se pode ser adcionado
+    if(num <= 0 || num > 100) {
+        console.warn('[ERRO] Valor inválido ou já existente')
+        alert('[ERRO] Valor inválido ou já existente')
+    } else {
+        // Adcionar no Select
+        const select = document.getElementById('txts')
+        const option = document.createElement('option')
+        select.appendChild(option)
     
-    for (var cont in array) {
-        if (numValue <= 0 || numValue > 100 || numValue == array[cont] ){
-            alert('[ERRO] Valor inserido inválido ou já presente')
-        } else {
+        option.innerText = `Valor ${num} adicionado.`
 
-            var option = document.createElement('option')
-            select.appendChild(option)
-    
-            option.innerText = `Valor ${numValue} adicionado.`
-            for (var pos = 0; pos < select.length; pos++) {
-                array[pos] = numValue
-                console.log(`A posição ${pos} tem o valor: ${array[pos]}`)
-                console.log(array)
+        // Adcionar no Array
+        function addArray() {
+            valores = ['']
+            
+            for(let c = 0; c < valores.length; c++) {
+                valores.push('')
+                valores[c] = num
+                console.log(`valores = ${valores}`)
+                console.log(`c = ${c}`)
             }
-
         }
+
+        addArray()
     }
-}
-
-function verificar() {
-
 }
